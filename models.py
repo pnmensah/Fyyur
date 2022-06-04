@@ -33,7 +33,7 @@ class Venue(db.Model):
     state = db.Column(db.String(120))
     address = db.Column(db.String(120))
     phone = db.Column(db.String(120))
-    genres = db.Column(db.ARRAY(db.String))
+    genres = db.Column(db.ARRAY(db.String), nullable=False)
     website_link = db.Column(db.String)
     seeking_description = db.Column(db.String(120))
     seeking_talent = db.Column(db.Boolean)
@@ -46,12 +46,12 @@ class Venue(db.Model):
 class Artist(db.Model):
     __tablename__ = 'artists'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String())
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(), nullable=False)
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
     phone = db.Column(db.String(120))
-    genres = db.Column(db.String(120))
+    genres = db.Column(db.ARRAY(db.String), nullable=False)
     image_link = db.Column(db.String(500))
     seeking_venue = db.Column(db.Boolean)
     facebook_link = db.Column(db.String(120))
